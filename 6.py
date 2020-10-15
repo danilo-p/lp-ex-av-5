@@ -20,7 +20,7 @@ class CallbackBase:
         self.f = lambda x: x + 1
 
     def __str__(self):
-        return"basic callback"
+        return "basic callback"
 
     def shouldUpdate(self, i):
         return True
@@ -28,23 +28,27 @@ class CallbackBase:
     def update(self, i):
         return self.f(i) if self.shouldUpdate(i) else i
 
+
 class CallbackCube(CallbackBase):
     def __init__(self):
         self.f = lambda x: x ** 3
 
     def __str__(self):
-        return"cube callback"
+        return "cube callback"
+
 
 class CallbackOdd(CallbackBase):
     def shouldUpdate(self, i):
         return i % 2 == 1
 
     def __str__(self):
-        return"odd callback"
+        return "odd callback"
+
 
 class CallbackMult(CallbackOdd, CallbackCube):
     def __str__(self):
-        return"multiple callback"
+        return "multiple callback"
+
 
 def test():
     # Inicio
@@ -68,5 +72,6 @@ def test():
     c = Visitor(CallbackMult())
     print(c)
     print(c.visit([2, 3, 4]))
+
 
 test()
